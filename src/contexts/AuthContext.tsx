@@ -3,7 +3,7 @@ import { auth, firebase } from "../services/firebase";
 
 type User = {
   id: string;
-  nome: string;
+  name: string;
   avatar: string;
 };
 
@@ -31,7 +31,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         }
         setUser({
           id: uid,
-          nome: displayName,
+          name: displayName,
           avatar: photoURL,
         });
       }
@@ -54,7 +54,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
       }
       setUser({
         id: uid,
-        nome: displayName,
+        name: displayName,
         avatar: photoURL,
       });
     }
