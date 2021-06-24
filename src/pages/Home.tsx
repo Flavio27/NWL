@@ -11,12 +11,15 @@ import { useAuth } from "../hooks/useAuth";
 import { database } from "../services/firebase";
 
 import "../styles/auth.scss";
+import { useTheme } from "../hooks/useTheme";
 
 
 export function Home() {
   const history = useHistory();
   const { signInWithGoogle, user } = useAuth();
+  const {theme, toggleTheme} = useTheme();
   const [roomCode, setRoomCode] = useState("");
+
 
   const handleCreateRoom = async () => {
     if (!user) {
@@ -39,6 +42,11 @@ export function Home() {
       return;
     }
 
+    if(roomRef.val().endedAt){
+      alert('Room already closed!')
+      return;
+    }
+
     history.push(`/rooms/${roomCode}`)
   }
 
@@ -54,6 +62,8 @@ export function Home() {
       </aside>
       <main>
         <div className="main-content">
+          <h1>{theme}</h1>
+          <button onClick={toggleTheme}>change theme</button>
           <img src={logoImg} alt="LetMeAsk" />
           <Button className="create-room" onClick={handleCreateRoom}>
             <img src={googleImg} alt="Logo do google" />
