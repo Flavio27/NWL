@@ -88,6 +88,11 @@
           }
         }
 
+        > div{
+          display: flex;
+          gap: 16px;
+        }
+
         > span{
           font-size: 14px;
           color: #737380;
@@ -108,6 +113,10 @@
 
     .question-list{
       margin-top: 32px;
+      .buttons-question{
+        margin-left: 8px;
+        margin-right: 8px;
+      }
     }
   }
 }
